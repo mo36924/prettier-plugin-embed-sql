@@ -1,0 +1,152 @@
+{
+  "name": "prettier-plugin-embed-sql",
+  "version": "0.0.1",
+  "description": "",
+  "keywords": [],
+  "homepage": "https://github.com/mo36924/prettier-plugin-embed-sql#readme",
+  "bugs": {
+    "url": "https://github.com/mo36924/prettier-plugin-embed-sql/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mo36924/prettier-plugin-embed-sql.git"
+  },
+  "license": "MIT",
+  "author": "mo36924",
+  "main": "index.js",
+  "files": [
+    "index.js"
+  ],
+  "scripts": {
+    "build": "run-s lint format build:*",
+    "build:tsc": "tsc",
+    "lint": "eslint --ext .ts --fix .",
+    "format": "run-s format:*",
+    "format:sort-package-json": "sort-package-json",
+    "format:prettier": "prettier --write .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "prettier": {
+    "htmlWhitespaceSensitivity": "ignore",
+    "printWidth": 120,
+    "trailingComma": "all"
+  },
+  "eslintConfig": {
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+      "sourceType": "module"
+    },
+    "plugins": [
+      "eslint-plugin-import"
+    ],
+    "rules": {
+      "no-var": "error",
+      "padding-line-between-statements": [
+        "error",
+        {
+          "blankLine": "always",
+          "prev": "import",
+          "next": "*"
+        },
+        {
+          "blankLine": "never",
+          "prev": "import",
+          "next": "import"
+        },
+        {
+          "blankLine": "always",
+          "prev": "*",
+          "next": "export"
+        },
+        {
+          "blankLine": "any",
+          "prev": "export",
+          "next": "export"
+        },
+        {
+          "blankLine": "always",
+          "prev": "*",
+          "next": [
+            "class",
+            "function",
+            "block",
+            "block-like",
+            "multiline-expression",
+            "multiline-const",
+            "multiline-let"
+          ]
+        },
+        {
+          "blankLine": "always",
+          "prev": [
+            "class",
+            "function",
+            "block",
+            "block-like",
+            "multiline-expression",
+            "multiline-const",
+            "multiline-let"
+          ],
+          "next": "*"
+        },
+        {
+          "blankLine": "never",
+          "prev": "*",
+          "next": [
+            "case",
+            "default"
+          ]
+        },
+        {
+          "blankLine": "never",
+          "prev": [
+            "case",
+            "default"
+          ],
+          "next": "*"
+        }
+      ],
+      "sort-imports": [
+        "error",
+        {
+          "ignoreDeclarationSort": true
+        }
+      ],
+      "import/no-absolute-path": "error",
+      "import/no-dynamic-require": "error",
+      "import/no-self-import": "error",
+      "import/no-useless-path-segments": "error",
+      "import/order": [
+        "error",
+        {
+          "groups": [
+            "builtin",
+            "external",
+            "parent",
+            "sibling",
+            "index"
+          ],
+          "alphabetize": {
+            "order": "asc"
+          }
+        }
+      ]
+    }
+  },
+  "devDependencies": {
+    "@types/prettier": "^2.6.3",
+    "@typescript-eslint/parser": "^5.29.0",
+    "@typescript-eslint/types": "^5.29.0",
+    "eslint": "^8.18.0",
+    "eslint-plugin-import": "^2.26.0",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.7.1",
+    "prettier-plugin-sql": "^0.8.1",
+    "sort-package-json": "^1.57.0",
+    "typescript": "^4.7.4"
+  },
+  "peerDependencies": {
+    "prettier": "^2.7.1",
+    "prettier-plugin-sql": "^0.8.1"
+  }
+}
