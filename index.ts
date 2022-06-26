@@ -43,6 +43,15 @@ const createParser = (parser: Parser): Parser => ({
               node.tag.type === "Identifier" &&
               node.tag.name === "sql" &&
               name === "quasi",
+          ) ||
+          path.match(
+            (node) => node.type === "TemplateLiteral",
+            (node, name) =>
+              node.type === "TaggedTemplateExpression" &&
+              node.tag.type === "MemberExpression" &&
+              node.tag.property.type === "Identifier" &&
+              node.tag.property.name === "sql" &&
+              name === "quasi",
           )
         ) {
           const sql = node.quasis
